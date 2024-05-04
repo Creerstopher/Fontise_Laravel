@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('category')->constrained('category');
             $table->string('license')->constrained('licences');
-            $table->string('language');
-            $table->string('styles')->constrained('styles');
+            $table->string('styles');
             $table->text('information');
             $table->string('url');
         });

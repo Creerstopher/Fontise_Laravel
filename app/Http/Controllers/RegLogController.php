@@ -12,7 +12,7 @@ class RegLogController extends Controller
 {
     public function create()
     {
-        return view('pages.item.add');
+        return view('pages.register');
 
     }
 
@@ -32,7 +32,7 @@ class RegLogController extends Controller
 
     public function edit()
     {
-        return view('pages.item.edit');
+        return view('pages.login');
     }
 
     public function update(LoginRequest $request)

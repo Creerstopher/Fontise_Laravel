@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('styles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
+            $table->integer('weight');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('languages');
+        Schema::dropIfExists('styles');
     }
 };

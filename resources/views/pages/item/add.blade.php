@@ -45,7 +45,8 @@
                                     <p class="sb_title white_text">Стоимость</p>
                                 </div>
                                 <div class="mf_fm_bs_b">
-                                    <input type="text" name="price" placeholder="Введите стоимость" class="white_text" value="{{ old('price') }}">
+                                    <input type="text" name="price" placeholder="Введите стоимость" class="white_text"
+                                           value="{{ old('price') }}">
                                 </div>
                             </div>
                             <div class="mf_fm_bs yellow">
@@ -55,7 +56,9 @@
                                 <div class="mf_fm_bs_b">
                                     <select name="category" id="">
                                         <option value="" disabled selected>Выберите категорию</option>
-                                        <option value=""></option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -66,7 +69,9 @@
                                 <div class="mf_fm_bs_b">
                                     <select name="license" id="">
                                         <option value="" disabled selected>Выберите лицензию</option>
-                                        <option value=""></option>
+                                        @foreach($licenses as $licence)
+                                            <option value="{{ $licence->id }}">{{ $licence->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -77,8 +82,11 @@
                                     <p class="sb_title black_text">Стили</p>
                                 </div>
                                 <div class="mf_fm_bs_b">
-                                    <input type="text" name="styles" placeholder="Введите кол-во стилей"
-                                           class="black_text" value="{{ old('styles') }}">
+                                    @foreach($styles as $style)
+                                        <input type="checkbox" name="styles" class="black_text"
+                                               value="{{ $style->id }}">
+                                        <span>{{ $style->name }}</span>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="mf_fm_bs gray">

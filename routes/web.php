@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,15 @@ Route::middleware('admin')->group(function () {
         return view('pages.admin');
     })->name('admin');
 
+    Route::get('/item/edit', function () {
+        return view('pages.');
+    });
+});
+
+Route::group([
+    'middleware' => ['admin'],
+    'prefix' => 'admin',
+    'as' => 'admin.',
+], function () {
+   Route::get('item/add', [AdminController::class, 'addProduct'])->name('product.create');
 });
