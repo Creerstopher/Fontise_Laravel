@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Language;
 use App\Models\License;
@@ -17,11 +19,31 @@ class AdminController extends Controller
         $languages = Language::query()->get();
         $licenses = License::query()->get();
 
-        return view('pages.item.add', [
+        return view('pages.product.add', [
             'categories' => $categories,
             'styles' => $styles,
             'languages' => $languages,
             'licenses' => $licenses
         ]);
+    }
+
+    public function editProduct()
+    {
+        return view('pages.product.edit');
+    }
+
+    public function storeProduct(CreateProductRequest $request)
+    {
+        return redirect()->route('admin.product.create');
+    }
+
+    public function updateProduct(UpdateProductRequest $request)
+    {
+        return redirect()->route('admin.product.edit');
+    }
+
+    public function show()
+    {
+        return view('pages.admin');
     }
 }

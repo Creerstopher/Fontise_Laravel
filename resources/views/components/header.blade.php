@@ -36,9 +36,12 @@
             @guest()
                 <a class="adreg" href="/login">Вход</a>
             @endguest
-            <li><a href="/index">Главная</a></li>
-            <li><a href="">Админ-панель</a></li>
-            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="{{ route('home') }}">Главная</a></li>
+            @if(Auth::user()->role === \App\Enums\UserRoleEnum::ADMIN)
+                <li><a href="">Админ-панель</a></li>
+
+            @endif
+            <li><a href="{{ route('catalog') }}">Каталог</a></li>
             @auth()
                 <a class="adreg" href="">Выйти</a>
             @endauth
@@ -48,17 +51,17 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const openMenuButton = document.getElementById('open-menu');
-        const closeMenuButton = document.getElementById('close-menu');
-        const menu = document.getElementById('menu');
+  document.addEventListener('DOMContentLoaded', function () {
+    const openMenuButton = document.getElementById('open-menu')
+    const closeMenuButton = document.getElementById('close-menu')
+    const menu = document.getElementById('menu')
 
-        openMenuButton.addEventListener('click', function () {
-            menu.style.display = 'block';
-        });
+    openMenuButton.addEventListener('click', function () {
+      menu.style.display = 'block'
+    })
 
-        closeMenuButton.addEventListener('click', function () {
-            menu.style.display = 'none';
-        });
-    });
+    closeMenuButton.addEventListener('click', function () {
+      menu.style.display = 'none'
+    })
+  })
 </script>

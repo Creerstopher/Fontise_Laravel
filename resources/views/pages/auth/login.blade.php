@@ -7,7 +7,7 @@
         <div class="container">
             <div class="reg_items">
                 <h1>Вход</h1>
-                <form action="/login" method="post" name="login">
+                <form action="{{ route('auth.login.action') }}" method="post" name="login">
                     @csrf
                     <input type="email" name="email" placeholder="Почта" value="{{ old('email') }}">
                     @error('email')

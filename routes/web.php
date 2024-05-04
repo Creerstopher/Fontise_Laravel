@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,47 +16,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/catalog', function () {
-    return view('pages.catalog');
+Route::get('/catalog', [HomeController::class, 'catalog'])->name('catalog');
+
+Route::group([
+    'middleware' => ['guest'],
+    'prefix' => 'auth',
+    'as' => 'auth.'
+], function () {
+    Route::get('/login', [AuthController::class, 'loginView'])->name('login.view');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.action');
+
+    Route::get('/register', [AuthController::class, 'registrationView'])->name('register.view');
+    Route::post('/register', [AuthController::class, 'registration'])->name('register.action');
 });
 
-Route::controller(\App\Http\Controllers\RegLogController::class)->group(function () {
-
-    Route::middleware('guest')->group(function () {
-        Route::get('/login', 'edit')->name('login');
-        Route::post('/login', 'login');
-
-        Route::get('/register', 'create');
-        Route::post('/register', 'register');
-    });
-
-    Route::middleware('auth')->group(function () {
-        Route::get('/logout', 'logout');
-    });
-});
-
-Route::middleware('admin')->group(function () {
-    Route::get('/item/add', function () {
-        return view('pages.item.add');
-    })->name('item.add');
-
-    Route::get('/admin', function () {
-        return view('pages.admin');
-    })->name('admin');
-
-    Route::get('/item/edit', function () {
-        return view('pages.');
-    });
-});
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::group([
     'middleware' => ['admin'],
     'prefix' => 'admin',
     'as' => 'admin.',
 ], function () {
-   Route::get('item/add', [AdminController::class, 'addProduct'])->name('product.create');
+    Route::get('/product/create', [AdminController::class, 'addProduct'])->name('product.create');
+    Route::post('/product/store', [AdminController::class, 'storeProduct'])->name('product.store');
+    Route::get('/product/edit/{productId}', [AdminController::class, 'editProduct'])->name('product.edit');
+    Route::post('/product/update/{productId}', [AdminController::class, 'updateProduct'])->name('product.update');
+
+    Route::get('/admin', [AdminController::class, 'show'])->name('admin');
 });

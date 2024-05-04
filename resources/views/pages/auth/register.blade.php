@@ -7,7 +7,7 @@
         <div class="container">
             <div class="reg_items">
                 <h1>Регистрация</h1>
-                <form action="/register" method="post" name="reg">
+                <form action="{{ route('auth.register.action') }}" method="post">
                     @csrf
                     <input type="text" name="fname" placeholder="Имя" value="{{ old('fname') }}">
                     @error('fname')
