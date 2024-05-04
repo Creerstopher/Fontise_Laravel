@@ -7,8 +7,10 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Language;
 use App\Models\License;
+use App\Models\Product;
 use App\Models\Style;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -34,11 +36,26 @@ class AdminController extends Controller
 
     public function storeProduct(CreateProductRequest $request)
     {
+        $file = $request->file('font');
+
+        $filename = $file->store('fonts');
+
+        $product = Product::query()->create([
+            'name' => $request->name,
+            'filename' => $filename,
+        ]);
+
+        Storage::url('fonts/' . $filename);
+
         return redirect()->route('admin.product.create');
     }
 
     public function updateProduct(UpdateProductRequest $request)
     {
+        Product::query()->where('id', $request->productId)->update([
+            'name' => $request->name,
+        ]);
+
         return redirect()->route('admin.product.edit');
     }
 
