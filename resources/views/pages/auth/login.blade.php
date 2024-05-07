@@ -18,7 +18,7 @@
                     <input type="password" name="password" placeholder="Пароль">
                     <input class="submit" type="submit" name="submit" value="Войти">
                 </form>
-                <h3><a style="color: #FFFFFF" href="/register">Зарегистрироваться</a></h3>
+                <h3><a style="color: #FFFFFF" href="{{ route('auth.register.view') }}">Зарегистрироваться</a></h3>
             </div>
         </div>
     </div>

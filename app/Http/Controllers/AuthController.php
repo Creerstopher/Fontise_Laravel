@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRoleEnum;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
@@ -27,6 +28,7 @@ class AuthController extends Controller
             'lname' => $request['lname'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'role' => UserRoleEnum::USER,
         ]);
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials, true);

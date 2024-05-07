@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    public function adminView()
+    {
+        return view('pages.admin');
+    }
     public function addProduct()
     {
         $categories = Category::query()->get();

@@ -81,6 +81,9 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($)
+
+                        @endforeach
                         <?php foreach ($catalog as $item): ?>
                         <tr>
                             <td><?= $item['id']; ?></td>

@@ -44,5 +44,5 @@ Route::group([
     Route::get('/product/edit/{productId}', [AdminController::class, 'editProduct'])->name('product.edit');
     Route::post('/product/update/{productId}', [AdminController::class, 'updateProduct'])->name('product.update');
 
-    Route::get('/admin', [AdminController::class, 'show'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'adminView'])->name('admin');
 });
