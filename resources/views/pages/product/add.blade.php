@@ -3,7 +3,7 @@
 @section('title', 'Добавление')
 
 @section('content')
-    <form action="{{ route('admin.product.create') }}" method="post" name="add" enctype="multipart/form-data">
+    <form action="{{ route('admin.product.store') }}" method="post" name="add" enctype="multipart/form-data">
         <div class="main_font">
             <div class="container">
                 <div class="mp_items">
@@ -82,11 +82,22 @@
                                     <p class="sb_title black_text">Стили</p>
                                 </div>
                                 <div class="mf_fm_bs_b">
-                                    @foreach($styles as $style)
-                                        <input type="checkbox" name="styles" class="black_text"
-                                               value="{{ $style->id }}">
-                                        <span>{{ $style->name }}</span>
-                                    @endforeach
+                                    <div class="multiselect mf_fm_bs_b">
+                                        <div class="selectBox" onclick="showCheckboxes()">
+                                            <select>
+                                                <option>Выберите стили</option>
+                                            </select>
+                                            <div class="mf_fm_bs_b overSelect"></div>
+                                        </div>
+                                        <div id="checkboxes">
+                                            @foreach($styles as $style)
+                                                <label for="{{ $style->id }}">
+                                                    <input type="checkbox" name="styles"
+                                                           class="black_text" value="{{ $style->id }}"/>{{$style->name}}
+                                                </label>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mf_fm_bs gray">

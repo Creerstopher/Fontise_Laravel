@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Добавление')
+@section('title', 'Редактирование')
 
 @section('content')
-    <form action="{{ route('product.store') }}" method="post" name="add" enctype="multipart/form-data">
+    <form action="{{ route('admin.product.update', ['productId' => $product->id]) }}" method="post" enctype="multipart/form-data">
         <div class="main_font">
             <div class="container">
                 <div class="mp_items">
                     <div class="mp_font_img">
-                        <input type="text" name="name" placeholder="Название" value="{{ old('name') }}">
+                        <input type="text" name="name" placeholder="Название" value="{{ $product->name }}">
                     </div>
                     <div class="mp_font_info">
                         <div class="mp_fi_top">
                             <div class="mf_ft_bb">
                                 <p class="mf_ft_bb_title white_text">Информация</p>
                                 <input type="text" name="information" class="p mf_ft_bb_subtext white_text"
-                                       placeholder="Введите информацию" value="{{ old('information') }}">
+                                       placeholder="Введите информацию" value="{{ $product->information }}">
                             </div>
                             <div class="pop_b_b_small pop_btn_to">
                                 <div class="pbtb_top fe">
@@ -35,7 +35,7 @@
                                     </a>
                                 </div>
                                 <div class="pbbs_bottom">
-                                    <input type="submit" name="add" value="Добавить" class="pbbs_bottom_p">
+                                    <input type="submit" name="add" value="Отредактировать" class="pbbs_bottom_p">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="mf_fm_bs_b">
                                     <input type="text" name="price" placeholder="Введите стоимость" class="white_text"
-                                           value="{{ old('price') }}">
+                                           value="{{ $product->price }}">
                                 </div>
                             </div>
                             <div class="mf_fm_bs yellow">

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/catalog', [HomeController::class, 'catalog'])->name('catalog');
+Route::get('/catalog', [HomeController::class, 'catalogView'])->name('catalog');
 
 Route::group([
     'middleware' => ['guest'],
@@ -39,8 +39,9 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
 ], function () {
-    Route::get('/product/create', [AdminController::class, 'addProduct'])->name('product.create');
+    Route::get('/product/add', [AdminController::class, 'addProduct'])->name('product.create');
     Route::post('/product/store', [AdminController::class, 'storeProduct'])->name('product.store');
+
     Route::get('/product/edit/{productId}', [AdminController::class, 'editProduct'])->name('product.edit');
     Route::post('/product/update/{productId}', [AdminController::class, 'updateProduct'])->name('product.update');
 

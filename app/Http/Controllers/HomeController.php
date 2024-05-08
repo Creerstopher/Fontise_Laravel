@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     public function index()
@@ -9,8 +12,10 @@ class HomeController extends Controller
         return view('pages.index');
     }
 
-    public function catalog()
+    public function catalogView()
     {
-        return view('pages.catalog');
+        $products = Product::all();
+        $categories = Category::all();
+        return view('pages.catalog', compact('products', 'categories'));
     }
 }

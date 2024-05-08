@@ -13,10 +13,19 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
-        Language::query()->insert([['name' => 'Латиница'],
-            ['name' => 'Кириллица'],
-            ['name' => 'Арабская вязь'],
-            ['name' => 'Иероглифы']
-        ]);
+        Language::query()->insert(
+            [
+                ['name' => 'Латиница'],
+                ['name' => 'Кириллица'],
+                ['name' => 'Арабская вязь'],
+                ['name' => 'Китайский'],
+                ['name' => 'Японский'],
+                ['name' => 'Корейский'],
+                ['name' => 'Иврит'],
+                ['name' => 'Греческий'],
+                ['name' => 'Грузинский'],
+                ['name' => 'Армянский'],
+            ]
+        );
     }
 }

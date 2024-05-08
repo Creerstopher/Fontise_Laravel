@@ -1,22 +1,3 @@
-import './bootstrap';
-
-// type = "text/javascript" >
-//     $(document).ready(function () {
-//         $("body").css("display", "none");
-//
-//         $("body").fadeIn(200);
-//
-//         $("a").click(function (event) {
-//             event.preventDefault();
-//             linkLocation = this.href;
-//             $("body").fadeOut(200, redirectPage);
-//         });
-//
-//         function redirectPage() {
-//             window.location = linkLocation;
-//         }
-//     });s
-
 // Admin panel
 
 $fonts = document.getElementById('fonts')
@@ -73,3 +54,18 @@ $filter_btn.addEventListener('click', function () {
 $styles_btn.addEventListener('click', function () {
     $styles_selector.style.display = 'block';
 })
+
+// Checkbox select
+
+var expanded = false;
+
+function showCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+    } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+    }
+}

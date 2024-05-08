@@ -8,7 +8,7 @@
                     <a class="btn reg" href="/logout">Выйти</a>
                 @endauth
                 @guest()
-                    <a class="btn reg" href="/login">Вход</a>
+                    <a class="btn reg" href="{{ route('auth.login.view') }}">Вход</a>
                 @endguest
                 <a href="#" id="open-menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">

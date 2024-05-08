@@ -34,17 +34,16 @@
     <div class="catalog">
         <div class="container">
             <div class="catalog_items">
-                <?php foreach ($catalog as $item): ?>
+                @foreach ($products as $item)
 
                 <style>
                     @font-face {
-                        font-family: <?= $item['name']; ?>;
-                        src: url("<?= {{  }} ?>");
+                        font-family: {{ $item->name }};
+                        src: url("{{ $item->localurl }}");
                     }
                 </style>
 
-                    <?php $categories = $database->query('SELECT * FROM `categores` WHERE `id` = ' . $item['category'])->fetch(2) ?>
-                <a href="?page=fontpage&id=<?= $item['id']; ?>" class="pop_b_b_small">
+                <a href="?page=fontpage&id={{ $item->id }}" class="pop_b_b_small">
                     <div class="pbtb_top">
                         <div class="tags">
                             <div class="tag">
@@ -54,7 +53,7 @@
                                         d="M10 0C10 0 9.8682 5.62556 12.1213 7.87868C14.3744 10.1318 20 10 20 10C20 10 14.3744 9.8682 12.1213 12.1213C9.8682 14.3744 10 20 10 20C10 20 10.1318 14.3744 7.87868 12.1213C5.62556 9.8682 0 10 0 10C0 10 5.62556 10.1318 7.87868 7.87868C10.1318 5.62556 10 0 10 0Z"
                                     />
                                 </svg>
-                                <p><?= $categories['name']; ?></p>
+                                <p></p>
                             </div>
                         </div>
                         <div href="?page=fontpage&id=<?= $item['id']; ?>" class="btn_to">
@@ -72,11 +71,11 @@
                         </div>
                     </div>
                     <div class="pbbs_bottom">
-                        <h1><?= $item['name']; ?></h1>
+                        <h1>{{ $item->name }}</h1>
                         <p class="pbbs_bottom_aa" style="font-family: <?= $item['name'] ?>">Aa</p>
                     </div>
                 </a>
-                <?php endforeach; ?>
+                @endforeach
             </div>
         </div>
     </div>

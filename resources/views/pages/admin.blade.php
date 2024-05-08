@@ -69,7 +69,7 @@
                 <div style="display: none" class="ap_table animate__fadeIn" id="fonts_table">
                     <div class="ap_tt">
                         <h1>Шрифты</h1>
-                        <a class="btn" href="?page=add">Добавить</a>
+                        <a class="btn" href="{{ route('admin.product.create') }}">Добавить</a>
                     </div>
                     <table>
                         <thead>
@@ -81,21 +81,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($)
-
+                        @foreach($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td><a style="color: #FFFFFF"
+                                       href="?page=fontpage&id={{ $product->id }}">{{ $product->name }}</a></td>
+                                <td>Карим Загидуллин</td>
+                                <td class="table_actions">
+                                    <a href="?page=delete&font_id={{ $product->id }}">Удалить</a>
+                                    <a href="{{ route('admin.product.edit', ['productId' => $product->id]) }}">Редактировать</a>
+                                </td>
+                            </tr>
                         @endforeach
-                        <?php foreach ($catalog as $item): ?>
-                        <tr>
-                            <td><?= $item['id']; ?></td>
-                            <td><a style="color: #FFFFFF"
-                                   href="?page=fontpage&id=<?= $item['id']; ?>"><?= $item['name']; ?></a></td>
-                            <td>Карим Загидуллин</td>
-                            <td class="table_actions">
-                                <a href="?page=delete&font_id=<?= $item['id']; ?>">Удалить</a>
-                                <a href="?page=edit&font_id=<?= $item['id']; ?>">Редактировать</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -111,17 +108,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($pairs as $pair): ?>
-                        <tr>
-                            <td><?= $pair['id']; ?></td>
-                            <td><?= $pair['first_font']; ?></td>
-                            <td><?= $pair['second_font']; ?></td>
-                            <td class="table_actions">
-                                <a href="?page=delete&id=<?= $pair['id']; ?>">Удалить</a>
-                                <a href="?page=edit&id=<?= $pair['id']; ?>">Редактировать</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                        @foreach($pairs as $pair)
+                            <tr>
+                                <td>{{ $pair->id }}</td>
+                                <td>{{ $pair->first_pair }}</td>
+                                <td>{{ $pair->second_pair }}</td>
+                                <td class="table_actions">
+                                    <a href="?page=delete&id={{ $pair->id }}">Удалить</a>
+                                    <a href="?page=edit&id={{ $pair->id }}">Редактировать</a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -137,17 +134,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($users as $user): ?>
-                        <tr>
-                            <td><?= $user['id']; ?></td>
-                            <td><?= $user['first_name']; ?> <?= $user['last_name']; ?></td>
-                            <td><?= $user['email']; ?></td>
-                            <td class="table_actions">
-                                <a href="?page=delete&id=<?= $user['id']; ?>">Удалить</a>
-                                <a href="?page=edit&id=<?= $user['id']; ?>">Редактировать</a>
-                            </td>
-                        </tr>
-
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td class="table_actions">
+                                    <a href="?page=delete&id={{ $user->id }}">Удалить</a>
+                                    <a href="?page=edit&id={{ $user->id }}">Редактировать</a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
