@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/catalog', [HomeController::class, 'catalogView'])->name('catalog');
+Route::get('/catalog/{productId}', [HomeController::class, 'productView'])->name('product');
 
 Route::group([
     'middleware' => ['guest'],

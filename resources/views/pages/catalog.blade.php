@@ -43,7 +43,7 @@
                     }
                 </style>
 
-                <a href="?page=fontpage&id={{ $item->id }}" class="pop_b_b_small">
+                <a href="{{ route('product', ['productId' => $item->id]) }}" class="pop_b_b_small">
                     <div class="pbtb_top">
                         <div class="tags">
                             <div class="tag">

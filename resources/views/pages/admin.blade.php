@@ -137,7 +137,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                <td>{{ $user->fname }} {{ $user->lname }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td class="table_actions">
                                     <a href="?page=delete&id={{ $user->id }}">Удалить</a>

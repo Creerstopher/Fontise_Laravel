@@ -65,7 +65,7 @@ class AdminController extends Controller
         $filename = $file->store('fonts');
         $filename_download = $file_download->store('fonts_download');
 
-        $products = Product::query()->create([
+        Product::query()->create([
             'name' => $request->name,
             'information' => $request->information,
             'price' => $request->price,
@@ -75,8 +75,6 @@ class AdminController extends Controller
             'file' => $filename,
             'file_download' => $filename_download,
         ]);
-
-        dd($products);
 
         Storage::url('fonts/' . $filename);
         Storage::url('fonts_download/' . $filename_download);

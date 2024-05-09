@@ -18,4 +18,11 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('pages.catalog', compact('products', 'categories'));
     }
+
+    public function productView(int $productId)
+    {
+        $product = Product::find($productId);
+
+        return view('pages.product.product', compact('product'));
+    }
 }
