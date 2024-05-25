@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Font;
 
 class HomeController extends Controller
 {
@@ -14,15 +14,15 @@ class HomeController extends Controller
 
     public function catalogView()
     {
-        $products = Product::all();
+        $products = Font::all();
         $categories = Category::all();
         return view('pages.catalog', compact('products', 'categories'));
     }
 
     public function productView(int $productId)
     {
-        $product = Product::find($productId);
+        $font = Font::query()->with(['license', 'category', 'styles', 'languages'])->where('id', $productId)->first();
 
-        return view('pages.product.product', compact('product'));
+        return view('pages.product.product', compact('font'));
     }
 }

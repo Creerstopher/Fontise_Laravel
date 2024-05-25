@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('fonts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
-            $table->string('localurl');
-            $table->string('price');
-            $table->string('category')->constrained('category');
-            $table->string('license')->constrained('licences');
-            $table->string('styles');
+            $table->string('zip_path');
+            $table->string('front_path');
+            $table->decimal('price', 9);
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('license_id')->constrained('licenses');
             $table->text('information');
-            $table->string('url');
+            $table->boolean('is_enable')->default(true);
+            $table->timestamps();
         });
     }
 

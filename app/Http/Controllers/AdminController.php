@@ -8,17 +8,16 @@ use App\Models\Category;
 use App\Models\Language;
 use App\Models\License;
 use App\Models\Pair;
-use App\Models\Product;
+use App\Models\Font;
 use App\Models\Style;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function adminView()
     {
-        $products = Product::query()->get();
+        $products = Font::query()->get();
         $users = User::query()->get();
         $pairs = Pair::query()->get();
         return view('pages.admin', compact('products', 'users', 'pairs'));
@@ -42,7 +41,7 @@ class AdminController extends Controller
     public function editProduct(UpdateProductRequest $request, int $productId)
     {
         $id = $request->input('productId');
-        $product = Product::find($productId);
+        $product = Font::find($productId);
         $categories = Category::query()->get();
         $styles = Style::query()->get();
         $languages = Language::query()->get();
@@ -65,7 +64,7 @@ class AdminController extends Controller
         $filename = $file->store('fonts');
         $filename_download = $file_download->store('fonts_download');
 
-        Product::query()->create([
+        Font::query()->create([
             'name' => $request->name,
             'information' => $request->information,
             'price' => $request->price,
@@ -84,7 +83,7 @@ class AdminController extends Controller
 
     public function updateProduct(UpdateProductRequest $request)
     {
-        Product::query()->where('id', $request->productId)->update([
+        Font::query()->where('id', $request->productId)->update([
             'name' => $request->name,
         ]);
 

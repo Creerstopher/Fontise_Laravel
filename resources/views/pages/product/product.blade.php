@@ -3,10 +3,14 @@
 @section('title', 'Админ-панель')
 
 @section('content')
+    @php
+    /** @var App\Models\Font $font */
+    @endphp
+
     <style>
         @font-face {
-            font-family: {{ $product->name }};
-            src: url("{{ $product->localurl }}");
+            font-family: {{ $font->name }};
+            src: url("{{ $font->front_path }}");
         }
     </style>
 
@@ -14,19 +18,19 @@
         <div class="container">
             <div class="mp_items">
                 <div class="mp_font_img">
-                    <p style="font-family: {{ $product->name }}; ">{{ $product->name }}</p>
+                    <p style="font-family: {{ $font->name }}; ">{{ $font->name }}</p>
                 </div>
                 <div class="mp_font_info">
                     <div class="mp_fi_top">
                         <div class="mf_ft_bb">
                             <p class="mf_ft_bb_title white_text">Информация</p>
                             <p class="p mf_ft_bb_subtext white_text">
-                                {{ $product->information }}
+                                {{ $font->information }}
                             </p>
                         </div>
                         <div class="pop_b_b_small pop_btn_to">
                             <div class="pbtb_top fe">
-                                <a href="{{ $product->localurl }}" class="btn_to">
+                                <a href="{{ config('filesystems.disks.public.url') . '/' . $font->zip_path }}" class="btn_to">
                                     <svg class="arrow" width="50" height="50" viewBox="0 0 50 50" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="25" cy="25" r="25"/>
@@ -42,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="pbbs_bottom">
-                                <p class="pbbs_bottom_p">Скачать шрифт</p>
+                                <a href="{{ config('filesystems.disks.public.url') . '/' . $font->zip_path }}" download class="pbbs_bottom_p" target="_blank">Скачать шрифт</a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +67,7 @@
                                 </svg>
                             </div>
                             <div class="mf_fm_bs_b">
-                                <h2 class="white_text">{{ $product->price }}</h2>
+                                <h2 class="white_text">{{ $font->price !== 0 ? $font->price : 'Бесплатно' }}</h2>
                             </div>
                         </div>
                         <div class="mf_fm_bs yellow">
@@ -82,7 +86,7 @@
                                 </svg>
                             </div>
                             <div class="mf_fm_bs_b">
-                                <h2 class="white_text">{{ $product->categories }}</h2>
+                                <h2 class="white_text">{{ $font->category->name }}</h2>
                             </div>
                         </div>
                         <div class="mf_fm_bs green">
@@ -101,7 +105,7 @@
                                 </svg>
                             </div>
                             <div class="mf_fm_bs_b">
-                                <h2 class="white_text">{{ $product->license }}</h2>
+                                <h2 class="white_text">{{ $font->license->name }}</h2>
                             </div>
                         </div>
                     </div>
@@ -122,13 +126,23 @@
                                 </svg>
                             </div>
                             <div class="mf_fm_bs_b">
-                                <h2 class="black_text">{{ $product->styles }}</h2>
+                                @foreach($font->styles as $style)
+
+                                    <p class="black_text">{{ $style->name }}</p>
+                                @endforeach
+                            </div>
+                            <div class="mf_fm_bs_b">
+                                @foreach($font->languages as $lang)
+
+                                    <p class="black_text">{{ $lang->name }}</p>
+                                @endforeach
                             </div>
                         </div>
                         <div class="w mf_fb_bb gray">
                             <p class="sb_title white_text">Введите ваш текст</p>
-                            <input style="font-family: {{ $product->name }}"
-                                   value="Съешь ещё этих мягких французских булок, да выпей же чаю">
+                            <textarea style="font-family: {{ $font->name }}">
+                                Съешь ещё этих мягких французских булок, да выпей же чаю
+                            </textarea>
                         </div>
                     </div>
                 </div>

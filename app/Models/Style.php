@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Style extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+
 }

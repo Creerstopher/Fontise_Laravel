@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('pairs', function (Blueprint $table) {
             $table->id();
-            $table->integer('first_font')->constrained('products');
-            $table->integer('second_font')->constrained('products');
-            $table->timestamps();
+            $table->foreignId('first_id')->constrained('fonts');
+            $table->foreignId('second_id')->constrained('fonts');
         });
     }
 
