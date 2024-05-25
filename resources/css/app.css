@@ -976,6 +976,11 @@ footer {
     justify-content: space-between;
 }
 
+.mf_fm_bs_b{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .mf_fm_bs_b h2 {
     font-style: normal;
     font-weight: 500;

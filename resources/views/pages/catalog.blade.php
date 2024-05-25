@@ -39,7 +39,7 @@
                 <style>
                     @font-face {
                         font-family: {{ $item->name }};
-                        src: url("{{ $item->localurl }}");
+                        src: url("/{{ $item->localurl }}");
                     }
                 </style>
 

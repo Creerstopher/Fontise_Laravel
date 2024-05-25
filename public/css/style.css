@@ -1040,6 +1040,22 @@ footer {
     outline: none;
 }
 
+.mf_fb_bb textarea {
+    max-height: 130px;
+    width: 100%;
+
+    background: none;
+    border: none;
+
+    color: #FFF;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+
+    outline: none;
+}
+
 /*Profile*/
 
 .main_profile {
@@ -1267,6 +1283,11 @@ td {
     border: none;
 
     width: 100%;
+}
+
+.mf_fm_bs_b{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .mf_fm_bs_b input {
