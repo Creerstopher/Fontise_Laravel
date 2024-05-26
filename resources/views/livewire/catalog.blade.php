@@ -28,7 +28,7 @@
                 </div>
                 <div class="tags">
                     @foreach($languages as $id => $lang)
-                        <input type="checkbox" id="{{ $id }}" hidden name="languages"
+                        <input type="checkbox" id="checkbox-lang-{{ $id }}" hidden name="languages"
                                wire:model.live="searchLanguages"
                                value="{{ $id }}">
                         <div class="tag">
@@ -39,10 +39,7 @@
                                     d="M10 0C10 0 9.8682 5.62556 12.1213 7.87868C14.3744 10.1318 20 10 20 10C20 10 14.3744 9.8682 12.1213 12.1213C9.8682 14.3744 10 20 10 20C10 20 10.1318 14.3744 7.87868 12.1213C5.62556 9.8682 0 10 0 10C0 10 5.62556 10.1318 7.87868 7.87868C10.1318 5.62556 10 0 10 0Z"
                                 />
                             </svg>
-                            <label for="{{ $id }}">{{ $lang }}</label>
-{{--                            <input type="checkbox" id="{{ $id }}" hidden name="languages"--}}
-{{--                                   wire:model.live="searchLanguages"--}}
-{{--                                   value="{{ $id }}">--}}
+                            <label for="checkbox-lang-{{ $id }}">{{ $lang }}</label>
                         </div>
                     @endforeach
                 </div>
