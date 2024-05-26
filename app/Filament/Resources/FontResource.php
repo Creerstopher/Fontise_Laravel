@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FontResource\Pages;
 use App\Models\Font;
+use App\Models\Language;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
@@ -15,15 +16,19 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class FontResource extends Resource
 {
     protected static ?string $model = Font::class;
-    protected static ?string $label = 'Шрифты';
+    protected static ?string $label = 'Шрифт';
+    protected static ?string $pluralLabel = 'Шрифты';
     protected static ?string $navigationGroup = 'Шрифты';
     protected static ?int $navigationSort = 1;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -40,16 +45,18 @@ class FontResource extends Resource
                     ->inputMode('decimal'),
 
                 FileUpload::make('zip_path')
-                    ->label('Путь архива')
+                    ->label('Архив')
                     ->disk('public')
                     ->directory('zip-fonts')
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->required(),
 
                 FileUpload::make('front_path')
-                    ->label('Путь для фронта')
+                    ->label('Шрифт для фронта')
                     ->disk('public')
                     ->directory('front-fonts')
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->required(),
 
                 Select::make('category_id')
                     ->label('Категория')
@@ -82,6 +89,7 @@ class FontResource extends Resource
                     ->schema([
                         Select::make('language_id')
                             ->relationship('language', 'name')
+                            ->label('Язык')
                             ->searchable()
                             ->preload()
                             ->required(),
@@ -93,6 +101,7 @@ class FontResource extends Resource
                     ->schema([
                         Select::make('style_id')
                             ->relationship('style', 'name')
+                            ->label('Стиль')
                             ->searchable()
                             ->preload()
                             ->required(),
@@ -100,6 +109,9 @@ class FontResource extends Resource
             ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -109,7 +121,8 @@ class FontResource extends Resource
                     ->label('ID'),
 
                 TextColumn::make('name')
-                    ->label('Название'),
+                    ->label('Название')
+                    ->searchable(),
 
                 TextColumn::make('price')
                     ->numeric()
@@ -124,7 +137,29 @@ class FontResource extends Resource
 
             ])
             ->filters([
-                //
+                Filter::make('is_enable')
+                    ->query(fn (Builder $query): Builder => $query->where('is_enable', false))
+                    ->label('Выключенные'),
+
+                SelectFilter::make('category')
+                    ->label('Категория')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload(),
+
+                SelectFilter::make('languages')
+                    ->label('Языки')
+                    ->relationship('languages', 'name')
+                    ->searchable()
+                    ->multiple()
+                    ->preload(),
+
+                SelectFilter::make('styles')
+                    ->label('Стили')
+                    ->relationship('styles', 'weight')
+                    ->searchable()
+                    ->multiple()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

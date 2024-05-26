@@ -9,4 +9,7 @@ class License extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'name'
+    ];
 }
