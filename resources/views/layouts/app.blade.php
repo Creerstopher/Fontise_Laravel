@@ -17,7 +17,7 @@
     <meta name="application-name" content="Fontise">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#333333">
-
+    @livewireStyles
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="bg-[#0E0E0E]">
@@ -26,5 +26,7 @@
     @yield('content')
 </main>
 @include('components.footer')
+
+@livewireScripts
 </body>
 </html>
