@@ -1,3 +1,7 @@
+
+@section('title', "Каталог")
+
+
 <div>
     <div class="filter">
         <div class="container">

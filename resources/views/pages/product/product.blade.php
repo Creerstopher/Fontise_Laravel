@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Админ-панель')
+@section('title', "$font->name ")
 
 @section('content')
     @php
