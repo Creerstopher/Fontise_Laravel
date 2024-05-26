@@ -3,6 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FontResource\Pages;
+use App\Filament\Resources\FontResource\Pages\EditFont;
+use App\Filament\Resources\FontResource\Pages\ViewFont;
+use App\Filament\Resources\FontResource\RelationManagers\PairsRelationManager;
 use App\Models\Font;
 use App\Models\Language;
 use Filament\Forms\Components\FileUpload;
@@ -12,6 +15,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Pages\Page;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -29,7 +34,7 @@ class FontResource extends Resource
     protected static ?string $navigationGroup = 'Шрифты';
     protected static ?int $navigationSort = 1;
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
     public static function form(Form $form): Form
     {
         return $form
@@ -105,7 +110,26 @@ class FontResource extends Resource
                             ->searchable()
                             ->preload()
                             ->required(),
-                    ])
+                    ]),
+
+//                Repeater::make('firstPair')
+//                    ->label('Шрифт 1')
+//                    ->relationship('firstPair')
+//                    ->schema([
+//                        Select::make('second_id')
+//                            ->label('Second Font')
+//                            ->relationship('secondFont', 'name')
+//                            ->required(),
+//                    ]),
+//                Repeater::make('secondPair')
+//                    ->label('Шрифт 2')
+//                    ->relationship('secondPair')
+//                    ->schema([
+//                        Select::make('first_id')
+//                            ->label('First Font')
+//                            ->relationship('firstFont', 'name')
+//                            ->required(),
+//                    ]),
             ]);
     }
 
@@ -138,7 +162,7 @@ class FontResource extends Resource
             ])
             ->filters([
                 Filter::make('is_enable')
-                    ->query(fn (Builder $query): Builder => $query->where('is_enable', false))
+                    ->query(fn(Builder $query): Builder => $query->where('is_enable', false))
                     ->label('Выключенные'),
 
                 SelectFilter::make('category')
@@ -181,8 +205,16 @@ class FontResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+//            PairsRelationManager::class
         ];
+    }
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            ViewFont::class,
+            EditFont::class
+        ]);
     }
 
     public static function getPages(): array

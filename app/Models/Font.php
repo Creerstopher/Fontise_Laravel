@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,9 +11,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Font extends Model
 {
-    use HasFactory;
-
     protected $guarded = [];
+
+    public function firstPair(): HasMany
+    {
+        return $this->hasMany(Pair::class, 'first_id', 'id');
+    }
+
+    public function secondPair(): HasMany
+    {
+        return $this->hasMany(Pair::class, 'second_id', 'id');
+    }
+
+    public function pairs(): BelongsToMany
+    {
+        return $this->belongsToMany(Pair::class, 'pairs', 'first_id', 'second_id');
+    }
 
     public function license(): BelongsTo
     {
