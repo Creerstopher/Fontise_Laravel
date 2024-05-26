@@ -147,6 +147,12 @@ class FontResource extends Resource
                     ->searchable()
                     ->preload(),
 
+                SelectFilter::make('license')
+                    ->label('Лицензия')
+                    ->relationship('license', 'name')
+                    ->searchable()
+                    ->preload(),
+
                 SelectFilter::make('languages')
                     ->label('Языки')
                     ->relationship('languages', 'name')
