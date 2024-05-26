@@ -54,7 +54,7 @@
                     <style>
                         @font-face {
                             font-family: {{ $item->name }};
-                            src: url("/{{ $item->localurl }}");
+                            src: url("/{{ $item->front_path }}");
                         }
                     </style>
 
