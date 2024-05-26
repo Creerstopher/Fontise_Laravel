@@ -518,6 +518,16 @@ header {
     transition: ease-in-out 300ms;
 }
 
+input[type="checkbox"]:checked + .tag{
+    background: #06D6A0;
+    transition: ease-in-out 300ms;
+}
+
+input[type="checkbox"]:checked + .tag svg path {
+    fill: #FFFFFF;
+    transition: ease-in-out 300ms;
+}
+
 .tag p {
     color: #333;
     font-family: Manrope, sans-serif;

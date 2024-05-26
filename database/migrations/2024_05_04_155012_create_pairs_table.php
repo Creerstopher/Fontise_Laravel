@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('first_id')->constrained('fonts');
             $table->foreignId('second_id')->constrained('fonts');
+
+            $table->unique(['first_id', 'second_id']);
         });
     }
 

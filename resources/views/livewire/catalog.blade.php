@@ -2,15 +2,6 @@
     <div class="filter">
         <div class="container">
             <div class="filter-items">
-                {{--                <a class="filter_btn" id="filter_btn">--}}
-                {{--                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">--}}
-                {{--                        <path--}}
-                {{--                                d="M8.5 18.5V12.5H10.5V14.5H18.5V16.5H10.5V18.5H8.5ZM0.5 16.5V14.5H6.5V16.5H0.5ZM4.5 12.5V10.5H0.5V8.5H4.5V6.5H6.5V12.5H4.5ZM8.5 10.5V8.5H18.5V10.5H8.5ZM12.5 6.5V0.5H14.5V2.5H18.5V4.5H14.5V6.5H12.5ZM0.5 4.5V2.5H10.5V4.5H0.5Z"--}}
-                {{--                                fill="white"/>--}}
-                {{--                    </svg>--}}
-                {{--                    Фильтр--}}
-                {{--                </a>--}}
-                {{--                <div class="filter_search" id="filter_search">--}}
                 <div class="filter_top">
                     <form>
                         <div class="search_box">
@@ -37,7 +28,10 @@
                 </div>
                 <div class="tags">
                     @foreach($languages as $id => $lang)
-                        <div class=" tag">
+                        <input type="checkbox" id="{{ $id }}" hidden name="languages"
+                               wire:model.live="searchLanguages"
+                               value="{{ $id }}">
+                        <div class="tag">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                  viewBox="0 0 20 20"
                                  fill="none">
@@ -46,9 +40,9 @@
                                 />
                             </svg>
                             <label for="{{ $id }}">{{ $lang }}</label>
-                            <input type="checkbox" id="{{ $id }}" hidden name="languages"
-                                   wire:model.live="searchLanguages"
-                                   value="{{ $id }}">
+{{--                            <input type="checkbox" id="{{ $id }}" hidden name="languages"--}}
+{{--                                   wire:model.live="searchLanguages"--}}
+{{--                                   value="{{ $id }}">--}}
                         </div>
                     @endforeach
                 </div>
