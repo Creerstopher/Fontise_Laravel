@@ -13,15 +13,18 @@ class StyleSeeder extends Seeder
      */
     public function run(): void
     {
-        Style::query()->insert([
-            ['name' => 'Thin', 'weight' => '100'],
-            ['name' => 'ExtraLight', 'weight' => '200'],
-            ['name' => 'Light', 'weight' => '300'],
-            ['name' => 'Normal', 'weight' => '400'],
-            ['name' => 'Medium', 'weight' => '500'],
-            ['name' => 'SemiBold', 'weight' => '600'],
-            ['name' => 'Bold', 'weight' => '700'],
-            ['name' => 'ExtraBold', 'weight' => '800'],
-        ]);
+        Style::query()->insert(
+            [
+                ['name' => 'Thin', 'weight' => '100'],
+                ['name' => 'ExtraLight', 'weight' => '200'],
+                ['name' => 'Light', 'weight' => '300'],
+                ['name' => 'Regular', 'weight' => '400'],
+                ['name' => 'Medium', 'weight' => '500'],
+                ['name' => 'SemiBold', 'weight' => '600'],
+                ['name' => 'Bold', 'weight' => '700'],
+                ['name' => 'ExtraBold', 'weight' => '800'],
+                ['name' => 'Black', 'weight' => '900'],
+            ]
+        );
     }
 }

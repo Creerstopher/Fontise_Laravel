@@ -534,6 +534,22 @@ header {
     transition: ease-in-out 300ms;
 }
 
+.tag label {
+    color: #333;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 140%; /* 22.4px */
+
+    transition: ease-in-out 300ms;
+}
+
+.tag:hover label {
+    color: #FFF;
+    transition: ease-in-out 300ms;
+}
+
 .btn_to svg circle {
     fill: #FFFFFF;
     transition: ease-in-out 300ms;
@@ -835,46 +851,70 @@ footer {
 .filter-items {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.filter_btn {
+.filter_category {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+}
 
-    padding: 15px 35px;
-    flex-shrink: 0;
-
+.filter_category select {
+    width: 200px;
     border-radius: 10px;
-    background: #06D6A0;
 
-    color: #FFF;
-    font-family: Manrope, sans-serif;
+    color: white;
     font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
 
-    cursor: pointer;
+    background: #333333;
+    outline: none;
+    border: none;
+    appearance: none;
+
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
 }
 
-.filter_category a {
-    color: #FFFFFF;
+.filter_category::after {
+    content: url("../img/arrow_back_ios.svg");
+    position: absolute;
+    pointer-events: none;
 }
 
-.filter_search {
-    display: none;
+.filter_top {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.filter_categories_selector {
-    /*display: none;*/
-    flex-wrap: wrap;
+.search_box {
+    width: 925px;
+    border-radius: 10px;
+
+    background: #333333;
+    outline: none;
+    border: none;
+
+    display: flex;
+    align-items: center;
 }
 
-.filter_categories_selector a {
-    width: 250px;
-    height: 200px;
+.search_box svg {
+    margin: 0 20px;
+}
+
+.search_box input {
+    margin: 15px 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 18px;
 }
 
 /*Font Page*/
@@ -1285,7 +1325,7 @@ td {
     width: 100%;
 }
 
-.mf_fm_bs_b{
+.mf_fm_bs_b {
     display: flex;
     flex-wrap: wrap;
 }

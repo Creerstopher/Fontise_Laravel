@@ -13,10 +13,14 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::query()->insert([['name' => 'Sans-serif'],
-            ['name' => 'Serif'],
-            ['name' => 'Monospace'],
-            ['name' => 'Slab'],
-            ['name' => 'Display']]);
+        Category::query()->insert(
+            [
+                ['name' => 'Sans-serif'],
+                ['name' => 'Serif'],
+                ['name' => 'Monospace'],
+                ['name' => 'Slab'],
+                ['name' => 'Display']
+            ]
+        );
     }
 }
