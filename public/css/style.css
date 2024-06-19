@@ -670,6 +670,11 @@ input[type="checkbox"]:checked + .tag svg path {
     border: none;
 }
 
+.pop_btn_to:hover .pbbs_bottom_p{
+    color: #FFFFFF;
+    transition: ease-in-out 300ms;
+}
+
 .pbbs_bottom h1 {
     text-overflow: ellipsis;
 }
