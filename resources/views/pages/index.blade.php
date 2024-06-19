@@ -85,16 +85,6 @@
                                             </svg>
                                             <p>{{ $font->category->name }}</p>
                                         </div>
-                                        <div class="tag">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                 viewBox="0 0 20 20"
-                                                 fill="none">
-                                                <path
-                                                        d="M10 0C10 0 9.8682 5.62556 12.1213 7.87868C14.3744 10.1318 20 10 20 10C20 10 14.3744 9.8682 12.1213 12.1213C9.8682 14.3744 10 20 10 20C10 20 10.1318 14.3744 7.87868 12.1213C5.62556 9.8682 0 10 0 10C0 10 5.62556 10.1318 7.87868 7.87868C10.1318 5.62556 10 0 10 0Z"
-                                                />
-                                            </svg>
-                                            <p>{{ $font->downloads }} загрузок</p>
-                                        </div>
                                     </div>
                                     <a href="{{ route('product', ['productId' => $font->id]) }}" class="btn_to">
                                         <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
