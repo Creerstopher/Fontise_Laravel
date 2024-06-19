@@ -894,12 +894,6 @@ footer {
     align-items: center;
 }
 
-.filter_category::after {
-    content: url("../img/arrow_back_ios.svg");
-    position: absolute;
-    pointer-events: none;
-}
-
 .filter_top {
     display: flex;
     gap: 20px;
@@ -1536,7 +1530,26 @@ td {
         width: 100%;
     }
 
-    .choose_title
+    .filter_top{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter_top form{
+        width: 100%;
+    }
+
+    .search_box{
+        width: 100%;
+    }
+
+    .filter_category{
+        width: 100%;
+    }
+
+    .filter_category select{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 950px) {
