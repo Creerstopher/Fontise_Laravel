@@ -95,7 +95,7 @@
                         </div>
                         <div class="pbbs_bottom">
                             <h1>{{ $item->name }}</h1>
-                            <p class="pbbs_bottom_aa" style="font-family: <?= $item['name'] ?>">Aa</p>
+                            <p class="pbbs_bottom_aa" style="font-family: {{ $item->name }}">Aa</p>
                         </div>
                     </a>
                 @endforeach
