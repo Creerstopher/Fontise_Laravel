@@ -2,18 +2,15 @@
 
 namespace App\Filament\Resources\FontResource\RelationManagers;
 
-use App\Models\Font;
-use App\Models\Pair;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
 class PairsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'pairs';
+    protected static string $relationship = 'firstPair';
     protected static ?string $title = 'Пары';
     protected static ?string $pluralLabel = 'Пара';
 
@@ -66,10 +63,10 @@ class PairsRelationManager extends RelationManager
             ]);
     }
 
-    public function query(): Builder
-    {
-        /** @var Font $font */
-        $font = $this->ownerRecord;
-        return Pair::query()->where('first_id', $font->id)->orWhere('second_id', $font->id);
-    }
+//    public function query(): Builder
+//    {
+//        /** @var Font $font */
+//        $font = $this->ownerRecord;
+//        return Pair::query()->where('first_id', $font->id)->orWhere('second_id', $font->id);
+//    }
 }

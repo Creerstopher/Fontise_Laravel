@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('license_id')->constrained('licenses');
             $table->text('information');
+            $table->unsignedInteger('downloads')->default(0);
             $table->boolean('is_enable')->default(true);
             $table->timestamps();
         });

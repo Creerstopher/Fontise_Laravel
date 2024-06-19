@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/catalog', Catalog::class)->name('catalog');
-Route::get('/catalog/{productId}', [HomeController::class, 'productView'])->name('product');
+Route::get('/product/{productId}', [HomeController::class, 'productView'])->name('product');
+Route::get('/product/{productId}/download', [HomeController::class, 'downloadFont'])->name('download');
+Route::get('/font/download', [HomeController::class, 'downloadFile'])->name('font-download');
 
 Route::group([
     'middleware' => ['guest'],
@@ -36,16 +38,16 @@ Route::group([
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::group([
-    'middleware' => ['admin'],
-    'prefix' => 'admin',
-    'as' => 'admin.',
-], function () {
-    Route::get('/product/add', [AdminController::class, 'addProduct'])->name('product.create');
-    Route::post('/product/store', [AdminController::class, 'storeProduct'])->name('product.store');
-
-    Route::get('/product/edit/{productId}', [AdminController::class, 'editProduct'])->name('product.edit');
-    Route::post('/product/update/{productId}', [AdminController::class, 'updateProduct'])->name('product.update');
-
-    Route::get('/admin', [AdminController::class, 'adminView'])->name('admin');
-});
+//Route::group([
+//    'middleware' => ['admin'],
+//    'prefix' => 'admin',
+//    'as' => 'admin.',
+//], function () {
+//    Route::get('/product/add', [AdminController::class, 'addProduct'])->name('product.create');
+//    Route::post('/product/store', [AdminController::class, 'storeProduct'])->name('product.store');
+//
+//    Route::get('/product/edit/{productId}', [AdminController::class, 'editProduct'])->name('product.edit');
+//    Route::post('/product/update/{productId}', [AdminController::class, 'updateProduct'])->name('product.update');
+//
+//    Route::get('/admin', [AdminController::class, 'adminView'])->name('admin');
+//});

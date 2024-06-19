@@ -61,7 +61,7 @@
                                 </a>
                             </div>
                             <div class="pbbs_bottom">
-                                <a href="{{ config('filesystems.disks.public.url') . '/' . $font->zip_path }}" download
+                                <a href="{{ route('download', ['productId' => $font->id]) }}"
                                    class="pbbs_bottom_p" target="_blank">Скачать шрифт</a>
                             </div>
                         </div>

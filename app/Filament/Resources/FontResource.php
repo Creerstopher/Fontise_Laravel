@@ -152,6 +152,10 @@ class FontResource extends Resource
                     ->numeric()
                     ->label('Цена'),
 
+                TextColumn::make('downloads')
+                    ->numeric()
+                    ->label('Кол-во загрузок'),
+
                 TextColumn::make('category.name')
                     ->label('Категория'),
 
@@ -205,7 +209,7 @@ class FontResource extends Resource
     public static function getRelations(): array
     {
         return [
-//            PairsRelationManager::class
+            PairsRelationManager::class
         ];
     }
 
