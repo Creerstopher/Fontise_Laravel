@@ -10,7 +10,7 @@
     <style>
         @font-face {
             font-family: {{ $font->name }};
-            src: url("/{{ $font->front_path }}");
+            src: url("{{ Storage::disk('public')->url($font->front_path) }}");
         }
     </style>
 
