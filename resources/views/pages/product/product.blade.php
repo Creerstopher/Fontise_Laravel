@@ -156,15 +156,4 @@
             </div>
         </div>
     </div>
-
-    <textarea>
-        <style>
-            @import url("{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}");
-        </style>
-        <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}">
-
-        body{
-            font-family: {{ $font->name }}, {{ $font->category->name }}
-        }
-    </textarea>
 @endsection
