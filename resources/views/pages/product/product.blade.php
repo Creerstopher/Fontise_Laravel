@@ -159,7 +159,7 @@
 
     <pre style="color: white">
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap');
+            @import url("{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}");
         </style>
         <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}">
 
