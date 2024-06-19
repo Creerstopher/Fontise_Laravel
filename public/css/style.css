@@ -1527,6 +1527,16 @@ td {
         flex-direction: column-reverse;
         align-items: flex-start;
     }
+
+    .vashehzchozablock{
+        flex-wrap: wrap;
+    }
+
+    .vashehzchozablock .ch_block{
+        width: 100%;
+    }
+
+    .choose_title
 }
 
 @media screen and (max-width: 950px) {
@@ -1587,6 +1597,10 @@ td {
     }
 
     .reg_items form textarea {
+        width: 100%;
+    }
+
+    .choose_title{
         width: 100%;
     }
 
