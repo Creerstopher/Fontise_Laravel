@@ -89,8 +89,8 @@
                             <h1>{{ $item->name }}</h1>
                             <style>
                                 @font-face {
-                                    font-family: {{ $font->name }};
-                                    src: url("{{ Storage::disk('public')->url($font->front_path) }}");
+                                    font-family: {{ $item->name }};
+                                    src: url("{{ Storage::disk('public')->url($item->front_path) }}");
                                 }
                             </style>
                             <p class="pbbs_bottom_aa" style="font-family: {{ $item->name }}">Aa</p>
