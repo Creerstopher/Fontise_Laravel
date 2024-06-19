@@ -63,9 +63,9 @@
                         @foreach($fonts as $key => $font)
                             @php /** @var Font $font */ @endphp
                             <div class="
-                                @if($fonts[$key] == 0) pop_b_t_big @endif
-                                @if($fonts[$key] == 1) pop_b_t_medium @endif
-                                @if($fonts[$key] >= 3) pop_b_b_small @endif">
+                                @if($key == 0) pop_b_t_big @endif
+                                @if($key == 1) pop_b_t_medium @endif
+                                @if($key >= 3) pop_b_b_small @endif">
                                 <div class="pbtb_top">
                                     <div class="tags">
                                         <div class="tag">
