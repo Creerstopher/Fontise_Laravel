@@ -55,14 +55,6 @@
         <div class="container">
             <div class="catalog_items">
                 @foreach ($fonts as $item)
-
-                    <style>
-                        @font-face {
-                            font-family: {{ $item->name }};
-                            src: url("/{{ $item->front_path }}");
-                        }
-                    </style>
-
                     <a href="{{ route('product', ['productId' => $item->id]) }}" class="pop_b_b_small">
                         <div class="pbtb_top">
                             <div class="tags">
@@ -95,6 +87,12 @@
                         </div>
                         <div class="pbbs_bottom">
                             <h1>{{ $item->name }}</h1>
+                            <style>
+                                @font-face {
+                                    font-family: {{ $font->name }};
+                                    src: url("{{ Storage::disk('public')->url($font->front_path) }}");
+                                }
+                            </style>
                             <p class="pbbs_bottom_aa" style="font-family: {{ $item->name }}">Aa</p>
                         </div>
                     </a>
