@@ -23,7 +23,7 @@
                     <div class="rsm_top">
                         <h2>Обширная библиотека</h2>
                         <div class="rsm_top_bottom">
-                            <p class="rsm_number">1000+</p>
+                            <p class="rsm_number">{{ Font::count() }}+</p>
                             <p class="rsm_text">Шрифтов готовых к использованию, и это не конец, наша библиотека
                                 пополняется
                                 ежедневно.</p>
