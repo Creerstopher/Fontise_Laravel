@@ -1522,6 +1522,13 @@ td {
     }
 }
 
+@media screen and (max-width: 410px) {
+    .pbtb_bottom{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}
+
 @media screen and (max-width: 950px) {
     .reg {
         display: none;
