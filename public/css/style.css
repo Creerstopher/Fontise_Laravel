@@ -1604,6 +1604,14 @@ td {
         width: 100%;
     }
 
+    .vashehzchozablock{
+        flex-wrap: wrap;
+    }
+
+    .vashehzchozablock .ch_block{
+        width: 100%;
+    }
+
 }
 
 .wcalc {
