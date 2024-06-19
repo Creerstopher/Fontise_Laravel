@@ -157,7 +157,7 @@
         </div>
     </div>
 
-    <textarea style="color: white">
+    <textarea>
         <style>
             @import url("{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}");
         </style>
