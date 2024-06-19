@@ -31,21 +31,8 @@
             </svg>
         </button>
         <ul>
-            @auth()
-                <li><a href="/profile">Профиль</a></li>
-            @endauth
-            @guest()
-                <a class="adreg" href="{{ route('auth.login.view') }}">Вход</a>
-            @endguest
-
             <li><a href="{{ route('home') }}">Главная</a></li>
-            @if(Auth::check() && Auth::user()->role === UserRoleEnum::ADMIN)
-                <li><a href="{{ route('admin.admin') }}">Админ-панель</a></li>
-            @endif
             <li><a href="{{ route('catalog') }}">Каталог</a></li>
-            @auth()
-                <a class="adreg" href="/logout">Выйти</a>
-            @endauth
         </ul>
     </div>
 </div>
