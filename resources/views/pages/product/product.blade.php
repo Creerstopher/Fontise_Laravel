@@ -156,4 +156,12 @@
             </div>
         </div>
     </div>
+
+    <code>
+        <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}">
+
+        body{
+            font-family: {{ $font->name }}, {{ $font->category->name }}
+        }
+    </code>
 @endsection
