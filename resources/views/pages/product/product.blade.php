@@ -157,7 +157,7 @@
         </div>
     </div>
 
-    <pre style="color: white">
+    <textarea style="color: white">
         <style>
             @import url("{{ \Illuminate\Support\Facades\Storage::disk('public')->url($font->zip_path) }}");
         </style>
@@ -166,5 +166,5 @@
         body{
             font-family: {{ $font->name }}, {{ $font->category->name }}
         }
-    </pre>
+    </textarea>
 @endsection
