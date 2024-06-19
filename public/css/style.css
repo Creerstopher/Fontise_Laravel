@@ -1522,7 +1522,7 @@ td {
     }
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 570px) {
     .pbtb_bottom{
         flex-direction: column-reverse;
         align-items: flex-start;
