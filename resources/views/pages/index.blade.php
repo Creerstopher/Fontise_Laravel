@@ -103,6 +103,13 @@
                                 </div>
                                 <div class="pbtb_bottom">
                                     <h1>{{ $font->name }}</h1>
+                                    <style>
+                                        @font-face {
+                                            font-family: {{ $font->name }};
+                                            src: url("{{ Storage::disk('public')->url($font->front_path) }}");
+                                        }
+                                    </style>
+                                    <h1 style="font-family: {{ $font->name }}">{{ $font->name }}</h1>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="123"
                                          viewBox="0 0 200 123"
                                          fill="none">
