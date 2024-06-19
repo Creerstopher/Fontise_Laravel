@@ -19,13 +19,16 @@ class RefreshPairs extends Component
 
     public function regeneratePairs(): void
     {
-        $this->pair = Pair::query()
+        $pair = Pair::query()
             ->with(['second', 'first'])
             ->whereNot('id', $this->pairId)
             ->inRandomOrder()
             ->first();
 
-        $this->pairId = $this->pair->id;
+        if (!is_null($pair)) {
+            $this->pair = $pair;
+            $this->pairId = $this->pair->id;
+        }
     }
 
     public function render(): View|Factory

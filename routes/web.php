@@ -22,7 +22,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/catalog', Catalog::class)->name('catalog');
 Route::get('/product/{productId}', [HomeController::class, 'productView'])->name('product');
 Route::get('/product/{productId}/download', [HomeController::class, 'downloadFont'])->name('download');
-Route::get('/font/download', [HomeController::class, 'downloadFile'])->name('font-download');
 
 Route::group([
     'middleware' => ['guest'],

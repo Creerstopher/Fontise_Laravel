@@ -34,11 +34,6 @@ class HomeController extends Controller
 
         $font->increment('downloads');
 
-        return redirect()->route('font-download');
-    }
-
-    public function downloadFile(string $filePath)
-    {
-        return Storage::disk('public')->download($filePath);
+        return Storage::disk('public')->download($font->zip_path);
     }
 }
